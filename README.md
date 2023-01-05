@@ -5,14 +5,18 @@
 - [Install Docker](#install-docker)
 - [Run Jenkins from Docker container](#run-jenkins-from-docker-container)
 - [Create First Job](#create-first-job)
+- [Create Different jobs](#create-different-jobs)
+  - [1. Display build number and URL](#1-display-build-number-and-url)
+  - [2. Create job that runs Python code](#2-create-job-that-runs-python-code)
 
 
 # Tools Versions
 
-- OS : macOS Ventura 13.1
+- OS: macOS Ventura 13.1
 - Docker: 20.10.21
 - Jenkins: 2.375.1
 - Blueocean: 1.26.0
+- Visual Studio Code: 1.74.2
 
 # Install Docker
 
@@ -138,3 +142,34 @@ echo "Hello Jenkins"
 ![jenkins_console_output](media/jenkins_console_output.png)
 
 All resources are taken from [here](https://www.jenkins.io/doc/book/installing/docker/)
+
+# Create Different jobs
+
+## 1. Display build number and URL
+
+![jenkins_second_job](media/jenkins_second_job.png)
+![jenkins_second_job_success](media/jenkins_second_job_success.png)
+```
+echo "Hello Jenkins"
+echo "The build ID of the job is ${BUILD_ID}"
+echo "The build URL of the job is ${BUILD_URL}"
+echo "The build name of the job is ${BUILD_DISPLAY_NAME}"
+```
+
+## 2. Create job that runs Python code
+
+This repo contains a file called **python_job.py**.
+
+1. Create a new *Freestyle project* as above
+
+2. Add the repository [link](https://github.com/ceoca-ovidiu/jenkins.git) to the Source Code Management section
+
+![jenkins_python_1](media/jenkins_python_1.png)
+
+3. In the execute shell section add the following line of code
+
+![jenkins_python_2](media/jenkins_python_2.png)
+
+```
+python3 python_job.py
+```
